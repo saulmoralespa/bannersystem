@@ -38,8 +38,8 @@ class BSSMP_Banner_System_Admin_Menu_Role
 	            $rec_medium = empty($rec_medium) ? home_url() : $rec_medium;
 	            $endregister = $meta['status_order_rec_medium']['endregister'];
 	            $date = date('d-m-Y');
-	            $lines = file(bssmp_index_bannersystem()->plugin_path."rec_medium_click.txt");
-	            $clicks = isset($lines[0]) ? $lines[0] : 0;
+	            $opt = "bssmp_rec_medium_bannersystem";
+	            $clicks = empty(get_option($opt)) ? 0 : get_option($opt);
                 echo "<tr class='rectangulo_mediano_bannersystem'>
                     <th>".__('banner 300x250','bannersystem')." " . sprintf( __( 'Días restantes:  %s y ha recibido %s clicks', 'bannersystem' ), bssmp_index_bannersystem()->compararFechas($endregister,$date), $clicks ) ."</th>
                     <td>
@@ -58,8 +58,8 @@ class BSSMP_Banner_System_Admin_Menu_Role
 	            $leaderboard_url = empty($leaderboard_url) ? home_url() : $leaderboard_url;
 	            $endregister = $meta['status_order_leaderboard']['endregister'];
 	            $date = date('d-m-Y');
-	            $lines = file(bssmp_index_bannersystem()->plugin_path."leaderboard_click.txt");
-	            $clicks = isset($lines[0]) ? $lines[0] : 0;
+	            $opt = "bssmp_leaderboard_bannersystem";
+	            $clicks = empty(get_option($opt)) ? 0 : get_option($opt);
 	            echo "<tr class='leaderboard_bannersystem'>
                     <th>".__('banner 728x90','bannersystem')." " . sprintf( __( 'Días restantes:  %s y ha recibido %s clicks', 'bannersystem' ), bssmp_index_bannersystem()->compararFechas($endregister,$date), $clicks ) ."</th>
                     <td>
@@ -78,8 +78,8 @@ class BSSMP_Banner_System_Admin_Menu_Role
 	            $media_page_url = empty($media_page_url) ? home_url() : $media_page_url;
 	            $endregister = $meta['status_order_media_page']['endregister'];
 	            $date = date('d-m-Y');
-	            $lines = file(bssmp_index_bannersystem()->plugin_path."media_page_click.txt");
-	            $clicks = isset($lines[0]) ? $lines[0] : 0;
+	            $opt = "bssmp_media_page_bannersystem";
+	            $clicks = empty(get_option($opt)) ? 0 : get_option($opt);
 	            echo "<tr class='media_page_bannersystem'>
                     <th>".__('banner 300x600','bannersystem')." " . sprintf( __( 'Días restantes:  %s y ha recibido %s clicks', 'bannersystem' ), bssmp_index_bannersystem()->compararFechas($endregister,$date), $clicks ) ."</th>
                     <td>
@@ -98,8 +98,8 @@ class BSSMP_Banner_System_Admin_Menu_Role
 	            $medio_banner_url = empty($medio_banner_url) ? home_url() : $medio_banner_url;
 	            $endregister = $meta['status_order_medio_banner']['endregister'];
 	            $date = date('d-m-Y');
-	            $lines = file(bssmp_index_bannersystem()->plugin_path."medio_banner_click.txt");
-	            $clicks = isset($lines[0]) ? $lines[0] : 0;
+	            $opt = "bssmp_medio_banner_bannersystem";
+	            $clicks = empty(get_option($opt)) ? 0 : get_option($opt);
 	            echo "<tr class='medio_banner_bannersystem'>
                     <th>".__('banner 234x60','bannersystem')." " . sprintf( __( 'Días restantes:  %s y ha recibido %s clicks', 'bannersystem' ), bssmp_index_bannersystem()->compararFechas($endregister,$date), $clicks ) ."</th>
                     <td>
@@ -118,8 +118,8 @@ class BSSMP_Banner_System_Admin_Menu_Role
 	            $movil_banner_url = empty($movil_banner_url) ? home_url() : $movil_banner_url;
                 $endregister = $meta['status_order_movil_banner']['endregister'];
                 $date = date('d-m-Y');
-	            $lines = file(bssmp_index_bannersystem()->plugin_path."movil_banner_click.txt");
-	            $clicks = isset($lines[0]) ? $lines[0] : 0;
+	            $opt = "bssmp_movil_banner_bannersystem";
+	            $clicks = empty(get_option($opt)) ? 0 : get_option($opt);
 	            echo "<tr class='movil_banner_bannersystem'>
                     <th>".__('banner 320x100','bannersystem')." " . sprintf( __( 'Días restantes:  %s y ha recibido %s clicks', 'bannersystem' ), bssmp_index_bannersystem()->compararFechas($endregister,$date), $clicks ) ."</th>
                     <td>

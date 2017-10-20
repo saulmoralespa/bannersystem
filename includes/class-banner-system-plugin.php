@@ -225,23 +225,23 @@ class BSSMP_Banner_System_Plugin
 
 		if($_POST['banner_click'] == 'rec_medium'){
 
-			$this->UpdateTxt($_POST['banner_click'],true,true);
+			$this->UpdateClick($_POST['banner_click'],true,true);
 		}
 		if($_POST['banner_click'] == 'leaderboard'){
 
-			$this->UpdateTxt($_POST['banner_click'],true,true);
+			$this->UpdateClick($_POST['banner_click'],true,true);
 		}
 		if($_POST['banner_click'] == 'media_page'){
 
-			$this->UpdateTxt($_POST['banner_click'],true,true);
+			$this->UpdateClick($_POST['banner_click'],true,true);
 		}
 		if($_POST['banner_click'] == 'medio_banner'){
 
-			$this->UpdateTxt($_POST['banner_click'],true,true);
+			$this->UpdateClick($_POST['banner_click'],true,true);
 		}
 		if($_POST['banner_click'] == 'movil_banner'){
 
-			$this->UpdateTxt($_POST['banner_click'],true,true);
+			$this->UpdateClick($_POST['banner_click'],true,true);
 		}
 
 		die();
@@ -289,13 +289,13 @@ class BSSMP_Banner_System_Plugin
 					if (isset($front) && $front == 'rec_medium'){
 						return $dia;
 					}
-					$lines = file(bssmp_index_bannersystem()->plugin_path."rec_medium_click.txt");
-					$clicks = isset($lines[0]) ? $lines[0] : 0;
+					$opt = "bssmp_rec_medium_bannersystem";
+					$clicks = empty(get_option($opt)) ? 0 : get_option($opt);
 					if ($dia == 0 || $reset){
 						delete_option('banner_system_rec_medium_banner_url_pay');
 						delete_option('banner_system_rec_medium_banner_src_pay');
 						update_post_meta($user->ID,'order_banner_system',array('status_order_rec_medium' => null));
-						$this->UpdateTxt('rec_medium');
+						$this->UpdateClick('rec_medium');
 					}else{
 						$dataBanner .= sprintf( '<p>' . __( 'Banner 300x250 le quedan %s días y ha recibido %s clicks', 'bannersystem' ).'</p>', $dia, $clicks );
 					}
@@ -307,13 +307,13 @@ class BSSMP_Banner_System_Plugin
 					if (isset($front) && $front == 'leaderboard'){
 						return $dia;
 					}
-					$lines = file(bssmp_index_bannersystem()->plugin_path."leaderboard_click.txt");
-					$clicks = isset($lines[0]) ? $lines[0] : 0;
+					$opt = "bssmp_leaderboard_bannersystem";
+					$clicks = empty(get_option($opt)) ? 0 : get_option($opt);
 					if ($dia == 0 || $reset){
 						delete_option('banner_system_leaderboard_banner_url_pay');
 						delete_option('banner_system_leaderboard_banner_src_pay');
 						update_post_meta($user->ID,'order_banner_system',array('status_order_leaderboard' => null));
-						$this->UpdateTxt('leaderboard');
+						$this->UpdateClick('leaderboard');
 					}else{
 						$dataBanner .= sprintf( '<p>' . __( 'Banner 728x90 le quedan %s días y ha recibido %s clicks', 'bannersystem' ).'</p>', $dia, $clicks );
 					}
@@ -325,13 +325,13 @@ class BSSMP_Banner_System_Plugin
 					if (isset($front) && $front == 'media_page'){
 						return $dia;
 					}
-					$lines = file(bssmp_index_bannersystem()->plugin_path."media_page_click.txt");
-					$clicks = isset($lines[0]) ? $lines[0] : 0;
+					$opt = "bssmp_media_page_bannersystem";
+					$clicks = empty(get_option($opt)) ? 0 : get_option($opt);
 					if ($dia == 0 || $reset){
 						delete_option('banner_system_media_page_banner_url_pay');
 						delete_option('banner_system_media_page_banner_src_pay');
 						update_post_meta($user->ID,'order_banner_system',array('status_order_media_page' => null));
-						$this->UpdateTxt('media_page');
+						$this->UpdateClick('media_page');
 					}else{
 						$dataBanner .= sprintf( '<p>' . __( 'Banner 300x600 le quedan %s días y ha recibido %s clicks', 'bannersystem' ).'</p>', $dia, $clicks );
 					}
@@ -343,13 +343,13 @@ class BSSMP_Banner_System_Plugin
 					if (isset($front) && $front == 'medio_banner'){
 						return $dia;
 					}
-					$lines = file(bssmp_index_bannersystem()->plugin_path."medio_banner_click.txt");
-					$clicks = isset($lines[0]) ? $lines[0] : 0;
+					$opt = "bssmp_medio_banner_bannersystem";
+					$clicks = empty(get_option($opt)) ? 0 : get_option($opt);
 					if ($dia == 0 || $reset){
 						delete_option('banner_system_medio_banner_banner_url_pay');
 						delete_option('banner_system_medio_banner_banner_src_pay');
 						update_post_meta($user->ID,'order_banner_system',array('status_order_medio_banner' => null));
-						$this->UpdateTxt('medio_banner');
+						$this->UpdateClick('medio_banner');
 					}else{
 						$dataBanner .= sprintf( '<p>' . __( 'Banner 234x60 le quedan %s días y ha recibido %s clicks', 'bannersystem' ).'</p>', $dia, $clicks );
 					}
@@ -361,13 +361,13 @@ class BSSMP_Banner_System_Plugin
 					if (isset($front) && $front == 'movil_banner'){
 						return $dia;
 					}
-					$lines = file(bssmp_index_bannersystem()->plugin_path."movil_banner_click.txt");
-					$clicks = isset($lines[0]) ? $lines[0] : 0;
+					$opt = "bssmp_movil_banner_bannersystem";
+					$clicks = empty(get_option($opt)) ? 0 : get_option($opt);
 					if ($dia == 0 || $reset){
 						delete_option('banner_system_movil_banner_banner_url_pay');
 						delete_option('banner_system_movil_banner_banner_src_pay');
 						update_post_meta($user->ID,'order_banner_system',array('status_order_movil_banner' => null));
-						$this->UpdateTxt('movil_banner');
+						$this->UpdateClick('movil_banner');
 					}else{
 						$dataBanner .= sprintf( '<p>' . __( 'Banner 320x100 le quedan %s días y ha recibido %s clicks', 'bannersystem' ).'</p>', $dia, $clicks );
 					}
@@ -381,35 +381,26 @@ class BSSMP_Banner_System_Plugin
 
 	}
 
-	public function UpdateTxt($file, $click = false, $increase = false)
+	public function UpdateClick($opt, $click = false, $increase = false)
 	{
 
 		$count = '';
+		$opt = "bssmp_$opt"."_bannersystem";
+		$clicks = empty(get_option($opt)) ? false : get_option($opt);
 
-		$filetxt = bssmp_index_bannersystem()->plugin_path.$file."_click.txt";
-
-		$fileopen = fopen( $filetxt,'r');
-		while(!feof($fileopen)) {
-			$name = fgets($fileopen);
-			$lineas[] = $name;
-		}
-		fclose($fileopen);
-		$idpost=$lineas[0];
 
 		if ($click && $increase){
 
-			if ($idpost === false && $increase) {
+			if ($clicks === false && $increase) {
 				$count = 1;
 			}
-			if ($idpost !== false && $increase){
-				$count = $idpost + 1;
+			if ($clicks !== false && $increase){
+				$count = $clicks + 1;
 			}
 
 		}
 
-			$f=fopen($filetxt,'w');
-			fwrite($f, $count);
-			fclose($f);
+		update_option($opt,$count);
 
 	}
 
