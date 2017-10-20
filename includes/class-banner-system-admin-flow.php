@@ -6,12 +6,12 @@
  * Time: 02:27 PM
  */
 
-class ECPT_Banner_System_Admin_Flow
+class BSSMP_Banner_System_Admin_Flow
 {
 	public function configInit()
 	{
 
-		ecpt_bansystem()->tabsMenu->page();
+		bssmp_index_bannersystem()->tabsMenu->page();
 	}
 
 	public function content()
@@ -131,7 +131,7 @@ class ECPT_Banner_System_Admin_Flow
         </form>
         <div class="overlay-banner-system" style="display: none;">
             <div class="overlay-content-banner-system">
-                <img src="<?php echo ecpt_bansystem()->plugin_url . 'assets/img/loading.gif';?>" alt="">
+                <img src="<?php echo bssmp_index_bannersystem()->plugin_url . 'assets/img/loading.gif';?>" alt="">
                 <div class="message"><strong></strong></div>
             </div>
         </div>

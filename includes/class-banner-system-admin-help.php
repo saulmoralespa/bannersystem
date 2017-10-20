@@ -6,12 +6,12 @@
  * Time: 02:57 PM
  */
 
-class ECPT_Banner_System_Admin_Help
+class BSSMP_Banner_System_Admin_Help
 {
 	public function configInit()
 	{
 
-		ecpt_bansystem()->tabsMenu->page();
+		bssmp_index_bannersystem()->tabsMenu->page();
 	}
 
 	public function content()

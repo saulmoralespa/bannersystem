@@ -55,8 +55,8 @@ class flowAPI
 		$this->flow_url_fracaso = $this->url_pay . '?flowfail=failed';
 		$this->flow_url_confirmacion = $this->url_pay . '?flowcon=confirme';
 		$this->flow_url_retorno = home_url();
-		$this->flow_keys = ecpt_bansystem()->includes_path . 'flow/kpf/keys';
-		$this->file_logflow =  ecpt_bansystem()->includes_path . "flow/kpf/logs" . "/flowlog.txt";
+		$this->flow_keys = bssmp_index_bannersystem()->includes_path . 'flow/kpf/keys';
+		$this->file_logflow =  bssmp_index_bannersystem()->includes_path . "flow/kpf/logs" . "/flowlog.txt";
 
 	}
 

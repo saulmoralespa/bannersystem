@@ -6,7 +6,7 @@
  * Time: 10:46 PM
  */
 
-class ECPT_Banner_System_Admin_Tabs
+class BSSMP_Banner_System_Admin_Tabs
 {
 	public function page()
 	{
@@ -26,24 +26,24 @@ class ECPT_Banner_System_Admin_Tabs
 		$this->page_tabs($this->tab);
 
 		if($this->tab == 'general' ) {
-			$config = ecpt_bansystem()->AdminConfiguration;
+			$config = bssmp_index_bannersystem()->AdminConfiguration;
 			$config->content();
 		}
 
 		if($this->tab == 'banners') {
-			$paypal = ecpt_bansystem()->bannersAdmin;
+			$paypal = bssmp_index_bannersystem()->bannersAdmin;
 			$paypal->content();
 		}
 		if ($this->tab == 'flow') {
-			$email = ecpt_bansystem()->flowAdmin;
+			$email = bssmp_index_bannersystem()->flowAdmin;
 			$email->content();
 		}
 		if ($this->tab == 'member') {
-			$email = ecpt_bansystem()->memberAdmin;
+			$email = bssmp_index_bannersystem()->memberAdmin;
 			$email->content();
 		}
 		if ($this->tab == 'ayuda') {
-			$pdf = ecpt_bansystem()->helpAdmin;
+			$pdf = bssmp_index_bannersystem()->helpAdmin;
 			$pdf->content();
 
 		}
@@ -51,7 +51,7 @@ class ECPT_Banner_System_Admin_Tabs
 
 	public function page_tabs($current = 'general')
 	{
-		$name = ecpt_bansystem()->name;
+		$name = bssmp_index_bannersystem()->name;
 		$tabs = array(
 			'general'   => array('config-' . $name, __("General", 'bannersystem')),
 			'banners'  => array('configbanners-' . $name, __("Banners", 'bannersystem')),

@@ -14,17 +14,17 @@ Domain Path: /languages/
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; //Exit if accessed directly
 }
-if (!defined('ECPT_BANNER_SYSTEM_PLUGIN_VERSION')){
-	define('ECPT_BANNER_SYSTEM_PLUGIN_VERSION', '1.0.0');
+if (!defined('BSSMP_BANNER_SYSTEM_PLUGIN_VERSION')){
+	define('BSSMP_BANNER_SYSTEM_PLUGIN_VERSION', '1.0.0');
 }
 
-add_action('init','bannersystem_init', 0);
-function bannersystem_init() {
+add_action('init','bssmp_bannersystem_init', 0);
+function bssmp_bannersystem_init() {
 	load_plugin_textdomain( 'bannersystem', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
 	if(!requeriments_banner_system()){
 		return;
 	}
-	ecpt_bansystem()->banner_run();
+	bssmp_index_bannersystem()->banner_run();
 }
 add_action('notices_action_tag_banner', 'bannersystem_notices', 10, 1);
 function bannersystem_notices($notice){
@@ -69,28 +69,28 @@ function requeriments_banner_system()
 	}
 	return true;
 }
-function ecpt_bansystem(){
+function bssmp_index_bannersystem(){
     static $plugin;
     if (!isset($plugin)){
         require_once( 'includes/class-banner-system-plugin.php' );
-        $plugin = new ECPT_Banner_System_Plugin(__FILE__,ECPT_BANNER_SYSTEM_PLUGIN_VERSION,'Banner System');
+        $plugin = new BSSMP_Banner_System_Plugin(__FILE__,BSSMP_BANNER_SYSTEM_PLUGIN_VERSION,'Banner System');
 
     }
 	return $plugin;
 }
 
 
-function ecpt_activate() {
+function bssmp_activate_bannersystem() {
 	$upload_dir = wp_upload_dir();
 	$dir = $upload_dir['basedir'] . '/bannersystem/';
 	if(!is_dir($dir)){
-	    ecpt_bansystem()->createDirUploads($dir);
+		bssmp_index_bannersystem()->createDirUploads($dir);
     }
 	add_role( 'user_banner', 'Usuario banner', array( 'read' => true, 'level_0' => true ) );
-	wp_schedule_event( time(), 'daily', 'ecpt_user_banner_days' );
+	wp_schedule_event( time(), 'daily', 'bssmp_user_banner_days' );
 }
-function ecpt_deactivation(){
-	wp_clear_scheduled_hook( 'ecpt_user_banner_days' );
+function bssmp_deactivation_bannersystem(){
+	wp_clear_scheduled_hook( 'bssmp_user_banner_days' );
 }
-register_activation_hook(__FILE__,'ecpt_activate');
-register_deactivation_hook( __FILE__, 'ecpt_deactivation' );
+register_activation_hook(__FILE__,'bssmp_activate_bannersystem');
+register_deactivation_hook( __FILE__, 'bssmp_user_banner_days' );

@@ -6,7 +6,7 @@
  * Time: 11:38 AM
  */
 
-class ECPT_Banner_System_shortcodes
+class BSSMP_Banner_System_shortcodes
 {
 
 	public $pagePay;
@@ -67,7 +67,7 @@ class ECPT_Banner_System_shortcodes
 			</div>";
 
 			$price = $this->member_data["rec_medium_price"];
-			$duration = ecpt_bansystem()->banner_system_update_banner_days(false,false,'rec_medium');
+			$duration = bssmp_index_bannersystem()->banner_system_update_banner_days(false,false,'rec_medium');
 
 			if (isset($atts['data']) && isset($this->_event_medium) && !empty($price) && !empty($duration)){
 				$html = sprintf( '<p>' . __( 'El precio del banner es de %s y le restan %s días para estar disponible.', 'bannersystem' ).'</p>', $price, $duration );
@@ -93,7 +93,7 @@ class ECPT_Banner_System_shortcodes
 		$leaderboard_src = (empty($this->leaderboard_src_pay)) ? $this->upload_url.$leaderboard_src : $this->upload_url.$this->leaderboard_src_pay;
 
 		$price = $this->member_data["leaderboard_price"];
-		$duration = ecpt_bansystem()->banner_system_update_banner_days(false,false,'leaderboard');
+		$duration = bssmp_index_bannersystem()->banner_system_update_banner_days(false,false,'leaderboard');
 
 		if (isset($atts['data']) && isset($this->_event_leaderboard) && !empty($price) && !empty($duration)){
 			$html = sprintf( '<p>' . __( 'El precio del banner es de %s y le restan %s días para estar disponible.', 'bannersystem' ).'</p>', $price, $duration );
@@ -121,7 +121,7 @@ class ECPT_Banner_System_shortcodes
 		$mediapage_src = (empty($this->mediapage_src_pay)) ? $this->upload_url.$mediapage_src : $this->upload_url.$this->mediapage_src_pay;
 
 		$price = $this->member_data["media_page_price"];
-		$duration = ecpt_bansystem()->banner_system_update_banner_days(false,false,'media_page');
+		$duration = bssmp_index_bannersystem()->banner_system_update_banner_days(false,false,'media_page');
 
 		if (isset($atts['data']) && isset($this->_event_media_page) && !empty($price) && !empty($duration)){
 			$html = sprintf( '<p>' . __( 'El precio del banner es de %s y le restan %s días para estar disponible.', 'bannersystem' ).'</p>', $price, $duration );
@@ -148,7 +148,7 @@ class ECPT_Banner_System_shortcodes
 		$mediobanner_src = (empty($this->mediobanner_src_pay)) ? $this->upload_url.$mediobanner_src : $this->upload_url.$this->mediobanner_src_pay;
 
 		$price = $this->member_data["medio_banner_price"];
-		$duration = ecpt_bansystem()->banner_system_update_banner_days(false,false,'medio_banner');
+		$duration = bssmp_index_bannersystem()->banner_system_update_banner_days(false,false,'medio_banner');
 
 		if (isset($atts['data']) && isset($this->_event_medio_banner) && !empty($price) && !empty($duration)){
 			$html = sprintf( '<p>' . __( 'El precio del banner es de %s y le restan %s días para estar disponible.', 'bannersystem' ).'</p>', $price, $duration );
@@ -176,7 +176,7 @@ class ECPT_Banner_System_shortcodes
 
 
 		$price = $this->member_data["movil_banner_price"];
-		$duration = ecpt_bansystem()->banner_system_update_banner_days(false,false,'movil_banner');
+		$duration = bssmp_index_bannersystem()->banner_system_update_banner_days(false,false,'movil_banner');
 
 		if (isset($atts['data']) && isset($this->_event_movil_banner) && !empty($price) && !empty($duration)){
 			$html = sprintf( '<p>' . __( 'El precio del banner es de %s y le restan %s días para estar disponible.', 'bannersystem' ).'</p>', $price, $duration );
@@ -286,13 +286,13 @@ class ECPT_Banner_System_shortcodes
 			try {
 
 				// Lee los datos enviados por Flow
-				ecpt_bansystem()->flowAPI->read_confirm();
+				bssmp_index_bannersystem()->flowAPI->read_confirm();
 
 
 
 			} catch (Exception $e) {
 				// Si hay un error responde false
-				$html .= ecpt_bansystem()->flowAPI->build_response(false);
+				$html .= bssmp_index_bannersystem()->flowAPI->build_response(false);
 
 				return $html;
 			}
@@ -302,12 +302,12 @@ class ECPT_Banner_System_shortcodes
 		if (isset($_GET['flowsu'])){
 			try {
 				// Lee los datos enviados por Flow
-				ecpt_bansystem()->flowAPI->read_result();
+				bssmp_index_bannersystem()->flowAPI->read_result();
 
 			} catch (Exception $e) {
 				header($_SERVER['SERVER_PROTOCOL'] . ' 500 Ha ocurrido un error interno', true, 500);
 			}
-			$html .= ecpt_bansystem()->flowAPI->updataConfirm(true);
+			$html .= bssmp_index_bannersystem()->flowAPI->updataConfirm(true);
 
 		}
 		return $html;

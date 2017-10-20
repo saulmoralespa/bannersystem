@@ -6,13 +6,13 @@
  * Time: 12:09 PM
  */
 
-class ECPT_Banner_System_Admin
+class BSSMP_Banner_System_Admin
 {
 	public function __construct()
 	{
-		$this->name = ecpt_bansystem()->name;
-		$this->plugin_url = ecpt_bansystem()->plugin_url;
-		$this->version = ecpt_bansystem()->version;
+		$this->name = bssmp_index_bannersystem()->name;
+		$this->plugin_url = bssmp_index_bannersystem()->plugin_url;
+		$this->version = bssmp_index_bannersystem()->version;
 		add_action('admin_init', array($this, 'add_menu_banner_system'));
 		add_action('admin_menu', array($this, 'loadMenuBannerSystem'));
 		add_action('wp_ajax_create_pages_banner_sys',array($this,'banner_system_create_pages'));
@@ -28,12 +28,12 @@ class ECPT_Banner_System_Admin
 
 	public function loadMenuBannerSystem()
 	{
-		$configuracion = ecpt_bansystem()->AdminConfiguration;
-		$banners = ecpt_bansystem()->bannersAdmin;
-		$flow = ecpt_bansystem()->flowAdmin;
-		$member = ecpt_bansystem()->memberAdmin;
-		$help = ecpt_bansystem()->helpAdmin;
-		$menuUserRole = ecpt_bansystem()->memberRole;
+		$configuracion = bssmp_index_bannersystem()->AdminConfiguration;
+		$banners = bssmp_index_bannersystem()->bannersAdmin;
+		$flow = bssmp_index_bannersystem()->flowAdmin;
+		$member = bssmp_index_bannersystem()->memberAdmin;
+		$help = bssmp_index_bannersystem()->helpAdmin;
+		$menuUserRole = bssmp_index_bannersystem()->memberRole;
 	    add_menu_page($this->name, $this->name, 'manage_options', 'menus'. $this->name, array($this,'menu'. $this->name), $this->plugin_url .'icon.png');
 	    add_menu_page(__('Banners','bannersystem'), __('Banners','bannersystem'),'cap_user_banner_system','cap_user_'. $this->name, array($menuUserRole,'menu_user_role__banner_system'),$this->plugin_url .'icon.png');
 		$config = add_submenu_page('menus' . $this->name, 'Configuración', 'Configuración', 'manage_options', 'config-' . $this->name,array($configuracion,'configInit'));
@@ -112,7 +112,7 @@ class ECPT_Banner_System_Admin
 			$upload_dir = wp_upload_dir();
 			$dir = $upload_dir['basedir'] . '/bannersystem/';
 			if(!is_dir($dir)){
-				ecpt_bansystem()->createDirUploads($dir);
+				bssmp_index_bannersystem()->createDirUploads($dir);
 			}
 		}
 
@@ -239,7 +239,7 @@ class ECPT_Banner_System_Admin
 		}
 
 		if (isset($_POST['resetbanner'])){
-			ecpt_bansystem()->banner_system_update_banner_days(false,true);
+			bssmp_index_bannersystem()->banner_system_update_banner_days(false,true);
 		}
 
 		die();

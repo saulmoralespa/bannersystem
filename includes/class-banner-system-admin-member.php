@@ -6,12 +6,12 @@
  * Time: 09:02 PM
  */
 
-class ECPT_Banner_System_Admin_Member
+class BSSMP_Banner_System_Admin_Member
 {
 	public function configInit()
 	{
 
-		ecpt_bansystem()->tabsMenu->page();
+		bssmp_index_bannersystem()->tabsMenu->page();
 	}
 
 	public function content()
@@ -69,13 +69,13 @@ class ECPT_Banner_System_Admin_Member
             </form>
             <div class="overlay-banner-system" style="display: none;">
                 <div class="overlay-content-banner-system">
-                    <img src="<?php echo ecpt_bansystem()->plugin_url . 'assets/img/loading.gif';?>" alt="">
+                    <img src="<?php echo bssmp_index_bannersystem()->plugin_url . 'assets/img/loading.gif';?>" alt="">
                     <div class="message"><strong></strong></div>
                 </div>
             </div>
 			<?php
 		}
-        $dias = ecpt_bansystem()->banner_system_update_banner_days(true);
+        $dias = bssmp_index_bannersystem()->banner_system_update_banner_days(true);
 		?>
             <h1><?php _e( 'información de banners','bannersystem' ); ?> </h1>
             <?php if (!empty($dias)){echo $dias;}else{echo __('No hay banners rentados','bannersystem');} ?>

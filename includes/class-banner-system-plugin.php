@@ -8,7 +8,7 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
-class ECPT_Banner_System_Plugin
+class BSSMP_Banner_System_Plugin
 {
 	/**
 	 * @var string
@@ -72,7 +72,7 @@ class ECPT_Banner_System_Plugin
 		add_action('wp_ajax_nopriv_form_banner_system',array($this,'form_frontend_banner_system'));
 		add_action('wp_ajax_register_click_banner_system',array($this,'register_click_banner_system'));
 		add_action('wp_ajax_nopriv_register_click_banner_system',array($this,'register_click_banner_system'));
-		add_action('ecpt_user_banner_days',array($this, 'banner_system_update_banner_days'));
+		add_action('bssmp_user_banner_days',array($this, 'banner_system_update_banner_days'));
 	}
 
 	public function banner_run()
@@ -106,15 +106,15 @@ class ECPT_Banner_System_Plugin
 		require_once ($this->includes_path . 'class-banner-system-admin-tabs.php');
 		require_once ($this->includes_path . 'class-banner-system-shortcodes.php');
 		require_once ($this->includes_path . 'flow/kpf/flowAPI.php');
-		$this->Admin = new ECPT_Banner_System_Admin();
-		$this->AdminConfiguration = new ECPT_Banner_System_Admin_Configuration();
-		$this->bannersAdmin = new ECPT_Banner_System_Admin_Banners();
-		$this->flowAdmin = new ECPT_Banner_System_Admin_Flow();
-		$this->memberAdmin = new ECPT_Banner_System_Admin_Member();
-		$this->memberRole = new ECPT_Banner_System_Admin_Menu_Role();
-		$this->helpAdmin = new ECPT_Banner_System_Admin_Help();
-		$this->tabsMenu = new ECPT_Banner_System_Admin_Tabs();
-		$this->banners = new ECPT_Banner_System_shortcodes();
+		$this->Admin = new BSSMP_Banner_System_Admin();
+		$this->AdminConfiguration = new BSSMP_Banner_System_Admin_Configuration();
+		$this->bannersAdmin = new BSSMP_Banner_System_Admin_Banners();
+		$this->flowAdmin = new BSSMP_Banner_System_Admin_Flow();
+		$this->memberAdmin = new BSSMP_Banner_System_Admin_Member();
+		$this->memberRole = new BSSMP_Banner_System_Admin_Menu_Role();
+		$this->helpAdmin = new BSSMP_Banner_System_Admin_Help();
+		$this->tabsMenu = new BSSMP_Banner_System_Admin_Tabs();
+		$this->banners = new BSSMP_Banner_System_shortcodes();
 		$this->flowAPI = new flowAPI();
 
 	}
@@ -210,7 +210,7 @@ class ECPT_Banner_System_Plugin
 			update_post_meta($iduser,'order_banner_system', array($_POST['process'] => array('name' => $_POST['name_user_banner'], 'email' => $email, 'password' => $password, 'endregister' => $endregister)));
 			update_option($_POST['process'],$iduser);
 
-			$flow = ecpt_bansystem()->flowAPI->new_order($orden_compra, $monto, $concepto, $email);
+			$flow = bssmp_index_bannersystem()->flowAPI->new_order($orden_compra, $monto, $concepto, $email);
 
 			die(wp_json_encode($flow));
 
@@ -285,11 +285,11 @@ class ECPT_Banner_System_Plugin
 				$meta = get_post_meta($user->ID,'order_banner_system',true);
 				if(isset($meta['status_order_rec_medium'])){
 					$endregister = $meta['status_order_rec_medium']['endregister'];
-					$dia = ecpt_bansystem()->compararFechas($endregister,$date);
+					$dia = bssmp_index_bannersystem()->compararFechas($endregister,$date);
 					if (isset($front) && $front == 'rec_medium'){
 						return $dia;
 					}
-					$lines = file(ecpt_bansystem()->plugin_path."rec_medium_click.txt");
+					$lines = file(bssmp_index_bannersystem()->plugin_path."rec_medium_click.txt");
 					$clicks = isset($lines[0]) ? $lines[0] : 0;
 					if ($dia == 0 || $reset){
 						delete_option('banner_system_rec_medium_banner_url_pay');
@@ -303,11 +303,11 @@ class ECPT_Banner_System_Plugin
 
 				if (isset($meta['status_order_leaderboard'])){
 					$endregister = $meta['status_order_leaderboard']['endregister'];
-					$dia = ecpt_bansystem()->compararFechas($endregister,$date);
+					$dia = bssmp_index_bannersystem()->compararFechas($endregister,$date);
 					if (isset($front) && $front == 'leaderboard'){
 						return $dia;
 					}
-					$lines = file(ecpt_bansystem()->plugin_path."leaderboard_click.txt");
+					$lines = file(bssmp_index_bannersystem()->plugin_path."leaderboard_click.txt");
 					$clicks = isset($lines[0]) ? $lines[0] : 0;
 					if ($dia == 0 || $reset){
 						delete_option('banner_system_leaderboard_banner_url_pay');
@@ -321,11 +321,11 @@ class ECPT_Banner_System_Plugin
 
 				if (isset($meta['status_order_media_page'])){
 					$endregister = $meta['status_order_media_page']['endregister'];
-					$dia = ecpt_bansystem()->compararFechas($endregister,$date);
+					$dia = bssmp_index_bannersystem()->compararFechas($endregister,$date);
 					if (isset($front) && $front == 'media_page'){
 						return $dia;
 					}
-					$lines = file(ecpt_bansystem()->plugin_path."media_page_click.txt");
+					$lines = file(bssmp_index_bannersystem()->plugin_path."media_page_click.txt");
 					$clicks = isset($lines[0]) ? $lines[0] : 0;
 					if ($dia == 0 || $reset){
 						delete_option('banner_system_media_page_banner_url_pay');
@@ -339,11 +339,11 @@ class ECPT_Banner_System_Plugin
 
 				if (isset($meta['status_order_medio_banner'])){
 					$endregister = $meta['status_order_medio_banner']['endregister'];
-					$dia = ecpt_bansystem()->compararFechas($endregister,$date);
+					$dia = bssmp_index_bannersystem()->compararFechas($endregister,$date);
 					if (isset($front) && $front == 'medio_banner'){
 						return $dia;
 					}
-					$lines = file(ecpt_bansystem()->plugin_path."medio_banner_click.txt");
+					$lines = file(bssmp_index_bannersystem()->plugin_path."medio_banner_click.txt");
 					$clicks = isset($lines[0]) ? $lines[0] : 0;
 					if ($dia == 0 || $reset){
 						delete_option('banner_system_medio_banner_banner_url_pay');
@@ -357,11 +357,11 @@ class ECPT_Banner_System_Plugin
 
 				if (isset($meta['status_order_movil_banner'])){
 					$endregister = $meta['status_order_movil_banner']['endregister'];
-					$dia = ecpt_bansystem()->compararFechas($endregister,$date);
+					$dia = bssmp_index_bannersystem()->compararFechas($endregister,$date);
 					if (isset($front) && $front == 'movil_banner'){
 						return $dia;
 					}
-					$lines = file(ecpt_bansystem()->plugin_path."movil_banner_click.txt");
+					$lines = file(bssmp_index_bannersystem()->plugin_path."movil_banner_click.txt");
 					$clicks = isset($lines[0]) ? $lines[0] : 0;
 					if ($dia == 0 || $reset){
 						delete_option('banner_system_movil_banner_banner_url_pay');
@@ -386,7 +386,7 @@ class ECPT_Banner_System_Plugin
 
 		$count = '';
 
-		$filetxt = ecpt_bansystem()->plugin_path.$file."_click.txt";
+		$filetxt = bssmp_index_bannersystem()->plugin_path.$file."_click.txt";
 
 		$fileopen = fopen( $filetxt,'r');
 		while(!feof($fileopen)) {

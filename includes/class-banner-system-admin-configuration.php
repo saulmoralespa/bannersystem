@@ -6,13 +6,13 @@
  * Time: 04:45 PM
  */
 
-class ECPT_Banner_System_Admin_Configuration
+class BSSMP_Banner_System_Admin_Configuration
 {
 
 	public function configInit()
 	{
 
-		ecpt_bansystem()->tabsMenu->page();
+		bssmp_index_bannersystem()->tabsMenu->page();
 	}
 
 	public function content()
@@ -24,7 +24,7 @@ class ECPT_Banner_System_Admin_Configuration
 		    ?>
             <div id="create-pages">
                 <input type="hidden" name="createpages" value="all">
-                <img src="<?php echo ecpt_bansystem()->plugin_url .'assets/img/loading.gif'; ?>" style="display: none;">
+                <img src="<?php echo bssmp_index_bannersystem()->plugin_url .'assets/img/loading.gif'; ?>" style="display: none;">
                 <p><strong><?php echo __('Es necesario crear páginas','bannersystem');?></strong></p>
                 <button class="button button-primary" id="pages-bansys"><?php echo __('Crear páginas','bannersystem');?></button>
             </div>
@@ -36,7 +36,7 @@ class ECPT_Banner_System_Admin_Configuration
 		    ?>
             <div id="create-pages">
                 <input type="hidden" name="createpages" value="pay">
-                <img src="<?php echo ecpt_bansystem()->plugin_url .'assets/img/loading.gif'; ?>" style="display: none;">
+                <img src="<?php echo bssmp_index_bannersystem()->plugin_url .'assets/img/loading.gif'; ?>" style="display: none;">
                 <p><strong><?php echo __('Es necesario crear páginas','bannersystem');?></strong></p>
                 <button class="button button-primary" id="pages-bansys"><?php echo __('Crear páginas','bannersystem');?></button>
             </div>
@@ -48,7 +48,7 @@ class ECPT_Banner_System_Admin_Configuration
 		    ?>
             <div id="create-pages">
                 <input type="hidden" name="createpages" value="banners">
-                <img src="<?php echo ecpt_bansystem()->plugin_url .'assets/img/loading.gif'; ?>" style="display: none;">
+                <img src="<?php echo bssmp_index_bannersystem()->plugin_url .'assets/img/loading.gif'; ?>" style="display: none;">
                 <p><strong><?php echo __('Es necesario crear páginas','bannersystem');?></strong></p>
                 <button class="button button-primary" id="pages-bansys"><?php echo __('Crear páginas','bannersystem');?></button>
             </div>
