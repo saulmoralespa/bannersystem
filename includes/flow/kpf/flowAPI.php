@@ -467,11 +467,12 @@ class flowAPI
 		$process = get_option($namebanner);
 
 		if ($this->order['Status'] == 'EXITO' && $process != 'confirm' && $front == false){
+			$res = $this->build_response(true);
+			echo  $res;
+			$this->flow_log("$res", "updataConfirm");
 			update_option($namebanner,'confirm');
 			//Send messages
 			$this->_sendEmailFlow($id,$namebanner);
-			$res = $this->build_response(true);
-			$this->flow_log("$res", "updataConfirm");
 		}
 		if (isset($this->order['OrdenNumero']) && $process != 'confirm' && $front){
 			delete_option($namebanner);
@@ -507,6 +508,8 @@ class flowAPI
 			if ($send && $front){
 				$this->flow_log("$message", "updataConfirm");
 				return __('Su pedido ha sido confirmado y aprobado, revise su email','bannersystem');
+			}else{
+				return __('Su pedido ha sido confirmado y aprobado, no se ha podido enviar email','bannersystem');
 			}
 
 		}
