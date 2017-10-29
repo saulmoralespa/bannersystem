@@ -57,9 +57,8 @@ Si, el cliente además de gestionar, puede recibir estadisticas de clicks realiz
 
 1. Configuración general del plugin screenshot-1.png
 2. Banners por defecto screenshot-2.png
-3. Medio de pago por defecto screenshot-3.png
-3. Configuración de membresía screenshot-4.png
-3. Sesión de ayuda screenshot-5.png
+3. Configuración de membresía screenshot-3.png
+4. Sesión de ayuda screenshot-4.png
 
 == Changelog ==
 

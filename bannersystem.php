@@ -93,4 +93,4 @@ function bssmp_deactivation_bannersystem(){
 	wp_clear_scheduled_hook( 'bssmp_user_banner_days' );
 }
 register_activation_hook(__FILE__,'bssmp_activate_bannersystem');
-register_deactivation_hook( __FILE__, 'bssmp_user_banner_days' );
+register_deactivation_hook( __FILE__, 'bssmp_deactivation_bannersystem' );
