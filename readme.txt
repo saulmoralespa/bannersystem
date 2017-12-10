@@ -1,8 +1,8 @@
 === Banner System ===
 Contributors: saulmoralespa
 Tags: banners, sistema, publicidad, espacio, anuncio, 350x250, 728x90, 300x600, 234x60, 320x100, imágen
-Requires at least: 4.8.2
-Tested up to: 4.8.2
+Requires at least: 4.9.1
+Tested up to: 4.9.1
 Requires PHP: 5.6.0
 Stable tag: 1.0.0
 License: GPLv2 or later
